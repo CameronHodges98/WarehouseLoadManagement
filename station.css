@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+#palletDetails {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+#productID {
+    padding: 5px;
+    width: 200px;
+}
+button {
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#message {
+    color: green;
+    margin-top: 10px;
+}

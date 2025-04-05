@@ -1,0 +1,120 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    color: #333;
+}
+
+/* Location Section */
+#location {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#location input {
+    padding: 8px;
+    width: 200px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #d32f2f;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#assignLocationButton:hover {
+    background-color: #ff5050;
+}
+
+#location p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Buttons Section */
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#lockPalletButton {
+    background-color: lightgreen;
+}
+
+#unlockPalletButton {
+    background-color: lightcoral;
+}
+
+#unlockPalletButton:hover {
+    background-color: #ff6347;
+}
+
+/* Product Section */
+#palletDetails {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.product-list {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Add Product Section */
+#productID {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:focus {
+    outline: none;
+    border: 2px solid #222;
+}

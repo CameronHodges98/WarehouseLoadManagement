@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallet Details</title>
+    <link rel="stylesheet" href="palletDetails.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pallet Details</h1>
+
+        <div id="location">
+          <input type="text" id="locationInput" placeholder="Enter Location" />
+          <button id="assignLocationButton" onclick="assignLocation()">Assign Location</button>
+          <p id="locationDisplay"></p> <!-- For displaying location -->
+          <p>Location: <span id="locationText" ></span></p>
+          <p>Overflow: <span id="overflowText"></span></p>
+        </div>
+
+        <section id="buttons">
+          <div>
+             <button id="lockPalletButton" onclick="lockPallet()" style="display:none;">Complete Pallet</button>
+          </div>
+          <div>
+            <button id="unlockPalletButton" onclick="unlockPallet()" style="display:none;">Unlock Pallet</button>
+          </div>  
+        </section>
+
+        <div id="palletDetails"></div>
+        <hr>
+        <h3>Add Product to Pallet</h3>
+        <input type="text" id="productID" placeholder="Enter Product ID">
+        <button onclick="addProduct()">Add Product</button>
+    </div>
+
+    <script src="palletDetails.js"></script>
+</body>
+</html>
