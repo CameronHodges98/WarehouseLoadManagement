@@ -22,23 +22,29 @@
       <form>
         <label for="productTitle">Title:</label>
         <input type="text" id="productTitle" name="productTitle" />
-
+      
         <label for="productDescription">Description:</label>
         <input type="text" id="productDescription" name="productDescription" />
-
+      
         <label for="productCondition">Condition:</label>
-        <input type="text" id="productCondition" name="productCondition" />
-
+        <select id="productCondition" name="productCondition">
+          <option value="new">New</option>
+          <option value="used">Used</option>
+          <option value="damaged">Damaged</option>
+        </select>
+      
         <label for="productRetailPrice">Retail Price:</label>
         <input type="text" id="productRetailPrice" name="productRetailPrice" />
-
+      
         <label for="productSoldPrice">Sold Price:</label>
         <input type="text" id="productSoldPrice" name="productSoldPrice" />
+      
         <div>
           <button type="button" id="saveChangesButton">Save Changes</button>
           <button type="button" id="cancelChanges">Cancel</button>
         </div>
       </form>
+      
     </div>
 
     <!-- Footer Section -->

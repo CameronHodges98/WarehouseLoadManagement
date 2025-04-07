@@ -1,10 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
-    padding-top: 30px;
-    margin: 0;
-  }
+  font-family: Arial, sans-serif;
+  padding-top: 30px;
+  margin: 0;
+}
 
-  /* Universal Header */
+/* Universal Header */
 header {
   background-color: #666666;
   padding: 10px 20px;
@@ -44,83 +44,90 @@ h1 {
   text-align: center;
   text-decoration: underline 1.3px solid black;
 }
-  
-  #productDetails {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  h2, p {
-    text-align: center;
-    color: #d32f2f;
-  }
 
-  #productIDDisplay {
-    text-decoration: underline;
-    font-weight: bold; /* Optional: to make it stand out more */
-  }
-  
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  label {
-    color: #d32f2f;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left; /* Align label text to the left */
-  }
-  
-  input {
-    padding: 8px;
-    font-size: 16px;
-    margin-bottom: 10px; /* Space between input fields */
-  }
-  
-  input, label {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin: 0 15px;
-    background-color: #d32f2f;
-    border: 1px solid #222;
-    cursor: pointer;
-    font-size: 16px;
-    width: 200px; /* Button width */
-    transition: background-color .5s ease;
-  }
+#productDetails {
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-  form div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: space-between;
-  }
-  
-  button:hover {
-    background-color: #222;
-    color: white;
-  }
-  
-  /* Flex styling for label and input to align them */
-  label, input {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  input {
-    flex-grow: 1;
-    margin-left: 10px;
-  }
-  
-  /* Footer Section Styles */
+h2, p {
+  text-align: center;
+  color: #d32f2f;
+}
+
+#productIDDisplay {
+  text-decoration: underline;
+  font-weight: bold; /* Optional: to make it stand out more */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left; /* Align label text to the left */
+}
+
+input,
+select {
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px; /* Space between input fields */
+  width: 100%; /* Ensure inputs and select take up full width */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+input, label {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 15px;
+  background-color: #d32f2f;
+  border: 1px solid #222;
+  cursor: pointer;
+  font-size: 16px;
+  width: 200px; /* Button width */
+  transition: background-color .5s ease;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
+}
+
+button:hover {
+  background-color: #222;
+  color: white;
+}
+
+/* Flex styling for label and input to align them */
+label, input {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+input {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+#productCondition {
+  position: relative;
+  left: 10px;
+}
+
+/* Footer Section Styles */
 footer {
   position: fixed;
   bottom: 0;
