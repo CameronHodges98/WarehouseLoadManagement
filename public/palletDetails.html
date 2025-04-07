@@ -1,39 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pallet Details</title>
-    <link rel="stylesheet" href="palletDetails.css">
-</head>
-<body>
-    <div class="container">
+    <link rel="stylesheet" href="palletDetails.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="CargoTrack.png" alt="CargoTrack Logo" class="logo" />
         <h1>Pallet Details</h1>
+      </div>
+    </header>
 
-        <div id="location">
-          <input type="text" id="locationInput" placeholder="Enter Location" />
-          <button id="assignLocationButton" onclick="assignLocation()">Assign Location</button>
-          <p id="locationDisplay"></p> <!-- For displaying location -->
-          <p>Location: <span id="locationText" ></span></p>
-          <p>Overflow: <span id="overflowText"></span></p>
-        </div>
+    <!-- Back Button (top-left corner) -->
+    <button id="back-btn" class="back-btn" onclick="goBack()">Back to Console</button>
 
-        <section id="buttons">
-          <div>
-             <button id="lockPalletButton" onclick="lockPallet()" style="display:none;">Complete Pallet</button>
-          </div>
-          <div>
-            <button id="unlockPalletButton" onclick="unlockPallet()" style="display:none;">Unlock Pallet</button>
-          </div>  
-        </section>
+    <!-- Lock and Unlock Buttons Section -->
+    <section id="top-buttons">
+      <button
+        id="lockPalletButton"
+        onclick="lockPallet()"
+        style="display: none"
+      >
+        Complete Pallet
+      </button>
+      <button
+        id="unlockPalletButton"
+        onclick="unlockPallet()"
+        style="display: none"
+      >
+        Unlock Pallet
+      </button>
+    </section>
 
-        <div id="palletDetails"></div>
-        <hr>
-        <h3>Add Product to Pallet</h3>
-        <input type="text" id="productID" placeholder="Enter Product ID">
-        <button onclick="addProduct()">Add Product</button>
+    <div class="container">
+      <h1>Pallet Details</h1>
+
+      <div id="location">
+        <input type="text" id="locationInput" placeholder="Enter Location" />
+        <button id="assignLocationButton" onclick="assignLocation()">
+          Assign Location
+        </button>
+        <p id="locationDisplay"></p>
+        <!-- For displaying location -->
+        <p>Location: <span id="locationText"></span></p>
+        <p>Overflow: <span id="overflowText">False</span></p>
+      </div>
+
+      <div id="palletDetails"></div>
+      <hr />
+      <h3>Add Product to Pallet</h3>
+      <input type="text" id="productID" placeholder="Product ID" />
+      <input type="text" id="title" placeholder="Title" />
+      <input type="text" id="description" placeholder="Description" />
+      <label for="condition">Condition:</label>
+      <select id="condition">
+        <option value="new" >New</option>
+        <option value="used">Used</option>
+        <option value="damaged">Damaged</option>
+      </select>
+      <input type="number" id="retailPrice" placeholder="Retail Price" />
+      <input type="number" id="soldPrice" placeholder="Sold Price" />
+      <button id="addProductButton" onclick="addProduct()">Add Product</button>
     </div>
 
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-left">Demo Product</div>
+      <div class="footer-right">Design Credit: Cameron Hodges 2025</div>
+    </footer>
+
     <script src="palletDetails.js"></script>
-</body>
+  </body>
 </html>

@@ -13,6 +13,80 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
+    padding-bottom: 80px; /* Adding extra margin at the bottom */
+    padding-top: 45px;
+}
+
+/* Universal Header */
+header {
+    background-color: #666666;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #a50000;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+  
+  /* Flex container for header content */
+  .header-content {
+    display: flex;
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center align horizontally */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Logo style */
+  .logo {
+    position: absolute;
+    left: 20px; /* Position logo to the left */
+    height: 110px; /* Adjust logo size */
+    width: auto;
+  }
+  
+  /* Title styling */
+  h1 {
+    color: #a50000;
+    font-size: larger;
+    margin: 0;
+    text-align: center;
+    text-decoration: underline 1.3px solid black;
+  }
+
+  /* Section to position the buttons in the top-right corner */
+#top-buttons {
+    position: fixed;
+    top: 33%;
+    right: 10px;
+    display: flex;
+    gap: 10px; /* Space between the buttons */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Style for the Back Button */
+.back-btn {
+    position: fixed; /* Fix it to the top-left corner */
+    top: 50px;
+    left: 10px;
+    padding: 10px 15px; /* Make the button smaller */
+    background-color: #d32f2f;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; /* Smaller text size */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is above other content */
+    transition: background-color 0.5s ease;
+}
+
+.back-btn:hover {
+    background-color: black;
+    color: white;
 }
 
 /* Container to hold the content */
@@ -26,7 +100,7 @@ body {
 }
 
 /* Center the heading */
-h1 {
+.container h1 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
@@ -60,7 +134,7 @@ h1 {
 
 .pallet {
     background-color: #d32f2f;
-    padding: 10px 15px;
+    padding: 5px;
     margin: 10px 3px;
     border-radius: 5px;
     border: .5px solid #222;
@@ -68,14 +142,42 @@ h1 {
     color: #222;
     min-width: 60px;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
 }
 
 .pallet a {
     text-decoration: none;
     color: #222;
+    padding: 15px 5px;
 }
 
 .pallet a:hover{
     color: white;
+}
+
+.pallet:hover{
+    background-color: #222;
+}
+
+/* Footer Section Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #d32f2f;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #222;
+}
+
+.footer-left {
+    padding-left: 20px;
+}
+
+.footer-right {
+    padding-right: 20px;
 }

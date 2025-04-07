@@ -3,35 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <title>Pallet Generator</title>
   </head>
   <body>
-    <h1>Load & Pallet Management</h1>
-
+    <header>
+      <div class="header-content">
+        <img src="CargoTrack.png" alt="CargoTrack Logo" class="logo" />
+        <h1>Load & Pallet Management</h1>
+      </div>
+    </header>
     <div class="container">
       <!-- Left Section: Input Fields & Buttons -->
       <div class="controls">
         <label for="numPallets">Number of Pallets:</label>
         <input type="number" id="numPallets" min="1" value="1" />
-        <button onclick="generatePallet()">Create Pallet</button>
+        <button
+          onclick="document.getElementById('numPallets').value = 1;"
+          class="clear-button"
+        >
+          Clear
+        </button>
+
+        <label for="productIDsBulk">Number of Products:</label>
+        <input type="number" id="productIDsBulk" min="0" value="0" />
+        <button
+          onclick="document.getElementById('productIDsBulk').value = 0;"
+          class="clear-button"
+        >
+          Clear
+        </button>
+
+        <button onclick="createPalletsAndAddProducts()">
+          Create Pallets & Add Products
+        </button>
 
         <label for="deleteLoadID">Enter LoadID to Delete:</label>
         <input type="text" id="deleteLoadID" />
+        <button
+          onclick="document.getElementById('deleteLoadID').value = '';"
+          class="clear-button"
+        >
+          Clear
+        </button>
         <button onclick="deleteLoad()">Delete Load</button>
 
         <label for="deletePalletID">Enter PalletID to Delete:</label>
         <input type="text" id="deletePalletID" />
+        <button
+          onclick="document.getElementById('deletePalletID').value = '';"
+          class="clear-button"
+        >
+          Clear
+        </button>
         <button onclick="deletePallet()">Delete Pallet</button>
       </div>
 
-      <!-- Right Section: Output -->
+      <!-- Right Section: Output & Export -->
       <div class="output-container">
+        <!-- Search Input for LoadID or PalletID -->
+        <div>
+          <label for="searchInput">Search (LoadID / PalletID):</label>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Enter LoadID or PalletID"
+          />
+        </div>
         <h2>Current Loads & Pallets</h2>
         <div id="output"></div>
       </div>
+
+      <!-- Export Files Section -->
+      <div class="exportFiles">
+        <p class="export-label">Export Data</p>
+        <div>
+          <label for="exportLoadID">LoadID or PalletID</label>
+          <input
+            type="text"
+            id="exportLoadID"
+            placeholder="LoadID or PalletID"
+          />
+          <button onclick="exportToExcel()">Export to Excel</button>
+        </div>
+      </div>
     </div>
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-left">Demo Product</div>
+      <div class="footer-right">Design Credit: Cameron Hodges 2025</div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
   </body>
 </html>
-
-<script src="main.js"></script>

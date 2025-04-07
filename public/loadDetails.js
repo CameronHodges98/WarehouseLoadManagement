@@ -1,3 +1,8 @@
+// Function to go back to the previous page in the history stack
+const goBack = () => {
+  window.history.back(); // This will navigate the user back to the previous page
+};
+
 // Retrieve the LoadID from the URL
 const params = new URLSearchParams(window.location.search);
 const loadID = params.get("loadID");
@@ -20,7 +25,7 @@ function displayLoadDetails() {
               .map(
                 (palletID) =>
                   `<div class="pallet">
-                      <a href="palletDetails.html?loadID=${loadID}&palletID=${palletID}" target="_blank">
+                      <a href="palletDetails.html?loadID=${loadID}&palletID=${palletID}" target="_self">
                         Pallet ID: ${palletID}
                       </a>
                   </div>`

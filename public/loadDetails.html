@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Load Details</title>
-    <link rel="stylesheet" href="loadDetails.css">
-</head>
-<body>
+    <link rel="stylesheet" href="loadDetails.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="CargoTrack.png" alt="CargoTrack Logo" class="logo" />
+        <h1>Pallet Details</h1>
+      </div>
+    </header>
+    
+    <!-- Back Button (top-left corner) -->
+    <button class="back-btn" onclick="window.location.href='index.html'">
+      Back to Load Creation
+    </button>
+
     <div class="container">
-        <h1>Load Details</h1>
-        <div id="loadDetails"></div>
+      <h1>Load Details</h1>
+      <div id="loadDetails"></div>
     </div>
 
-    <script src="loadDetails.js">
-    </script>
-</body>
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-left">Demo Product</div>
+      <div class="footer-right">Design Credit: Cameron Hodges 2025</div>
+    </footer>
+
+    <script src="loadDetails.js"></script>
+  </body>
 </html>

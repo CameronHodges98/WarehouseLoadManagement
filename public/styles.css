@@ -8,19 +8,60 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     color: #333;
+    margin-bottom: 50px; /* Adding extra margin at the bottom */
 }
 
-h1 {
-    color: #d32f2f; /* Red color */
+/* Universal Header */
+header {
+    background-color: #666666;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #a50000;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+  }
+  
+  /* Flex container for header content */
+  .header-content {
+    display: flex;
+    align-items: center; /* Center align vertically */
+    justify-content: center; /* Center align horizontally */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  /* Logo style */
+  .logo {
+    position: absolute;
+    left: 20px; /* Position logo to the left */
+    height: 110px; /* Adjust logo size */
+    width: auto;
+  }
+  
+  /* Title styling */
+  h1 {
+    color: #a50000;
+    font-size: larger;
+    margin: 0;
     text-align: center;
-    margin-bottom: 30px;
-}
+    text-decoration: underline 1.3px solid black;
+  }
+
+  /* Add some space for the page content */
+  body {
+    padding-top: 45px; /* Prevent content from being hidden behind the fixed header */
+  }
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     width: 80%;
     max-width: 1000px;
@@ -33,7 +74,7 @@ h1 {
     margin-right: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
 }
 
 .output-container {
@@ -64,7 +105,7 @@ input[type="text"] {
 }
 
 button {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     background-color: #d32f2f; /* Red background */
     color: white;
@@ -76,8 +117,19 @@ button {
 }
 
 button:hover {
-    background-color: #c62828; /* Darker red on hover */
+    background-color: #222; /* Darker red on hover */
 }
+
+/* Style for Search Input */
+#searchInput {
+    padding: 10px;
+    width: 300px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
 
 .output-container h2 {
     color: #d32f2f;
@@ -104,6 +156,41 @@ hr {
     margin: 20px 0;
 }
 
+/* Pagination Controls */
+.pagination {
+    display: flex;
+    justify-content: center; /* Center the pagination controls horizontally */
+    align-items: center; /* Align the controls vertically */
+    margin-top: 20px;
+    gap: 10px; /* Adds space between the buttons and page number */
+}
+
+.pagination button {
+    padding: 10px 20px;
+    background-color: #d32f2f; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #222; /* Darker red on hover */
+}
+
+.pagination button:disabled {
+    background-color: #ccc; /* Gray out disabled buttons */
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 16px;
+    color: #333;
+}
+
+
 /* Center the form elements inside controls */
 .controls input,
 .controls button {
@@ -112,18 +199,99 @@ hr {
     width: 80%;
 }
 
+/* Export Files Section */
+.exportFiles {
+    background-color: #fff;
+    padding: 30px 20px; /* Increased vertical padding */
+    margin-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.exportFiles .export-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-bottom: 20px; /* Increased margin for spacing */
+}
+
+.exportFiles input,
+.exportFiles button {
+    width: 80%; /* Ensure input and button are evenly sized */
+    padding: 12px; /* Added more padding */
+    margin-bottom: 20px; /* Increased margin for more spacing */
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.exportFiles button {
+    background-color: #00796b; /* Teal background */
+}
+
+.exportFiles button:hover {
+    background-color: #004d40; /* Darker teal on hover */
+}
+
+/* Clear Button Styles */
+button.clear-button {
+    width: auto;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #e0e0e0; /* Light gray background */
+    color: #333;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.clear-button:hover {
+    background-color: #bdbdbd; /* Darker gray on hover */
+}
+
+/* Footer Section Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #d32f2f;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #222;
+}
+
+.footer-left {
+    padding-left: 20px;
+}
+
+.footer-right {
+    padding-right: 20px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         align-items: center;
     }
 
-    .controls {
+    .controls,
+    .exportFiles,
+    .output-container {
         width: 90%;
     }
 
     .output-container {
-        width: 90%;
         margin-top: 20px;
     }
 }

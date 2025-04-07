@@ -6,6 +6,11 @@ const palletDetailsDiv = document.getElementById("palletDetails");
 
 let loads = JSON.parse(localStorage.getItem("loads")) || {}; // Get loads from localStorage
 
+// Function to go back to the index.html page
+const goBack = () => {
+  window.location.href = "index.html"; // Redirects to the index.html page
+};
+
 // Function to assign location and set overflow to true
 const assignLocation = () => {
   const location = document.getElementById("locationInput").value.trim();
@@ -51,7 +56,12 @@ const displayPalletDetails = () => {
           <p class="product-list">
               ${
                 products.length > 0
-                  ? products.join(", ") // Join the products into a comma-separated list
+                  ? products
+                      .map(
+                        (product) =>
+                          `<a href="productDetails.html?loadID=${loadID}&palletID=${palletID}&productID=${product.productID}">${product.productID}</a>`
+                      )
+                      .join(", ")
                   : "No products in this pallet."
               }
           </p>
@@ -64,10 +74,12 @@ const displayPalletDetails = () => {
     if (pallet.locked) {
       unlockPalletButton.style.display = "block";
       unlockPalletButton.style.backgroundColor = "lightcoral";
+      unlockPalletButton.style.color = "#222";
       lockPalletButton.style.display = "none";
     } else {
       lockPalletButton.style.display = "block";
       lockPalletButton.style.backgroundColor = "lightgreen";
+      lockPalletButton.style.color = "#222";
       unlockPalletButton.style.display = "none";
     }
   } else {
@@ -126,6 +138,11 @@ const unlockPallet = () => {
 // Function to add product to pallet
 const addProduct = () => {
   const productID = document.getElementById("productID").value.trim();
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const condition = document.getElementById("condition").value.trim();
+  const retailPrice = parseFloat(document.getElementById("retailPrice").value);
+  const soldPrice = parseFloat(document.getElementById("soldPrice").value);
 
   // Regular expression to check if the ProductID is exactly 10 digits (0-9)
   const productIDRegex = /^\d{10}$/;
@@ -148,23 +165,40 @@ const addProduct = () => {
     }
 
     // Check if the productID already exists in the pallet's product list
-    if (loads[loadID][palletID].products.includes(productID)) {
+    if (
+      loads[loadID][palletID].products.some(
+        (product) => product.productID === productID
+      )
+    ) {
       alert("This Product ID already exists in the pallet.");
       return;
     }
 
-    // Add the product to the pallet
-    loads[loadID][palletID].products.push(productID);
+    // Add the new product object to the pallet
+    const newProduct = {
+      productID,
+      title,
+      description,
+      condition,
+      retailPrice,
+      soldPrice,
+    };
+
+    loads[loadID][palletID].products.push(newProduct);
     localStorage.setItem("loads", JSON.stringify(loads)); // Save updated loads to localStorage
     displayPalletDetails(); // Refresh the display
   } else {
     alert("Invalid LoadID or PalletID.");
   }
 
-  // Reset the input field but keep the focus active
-  const productIDInput = document.getElementById("productID");
-  productIDInput.value = ""; // Clear the input
-  productIDInput.focus(); // Keep focus on the input field for the next entry
+  // Reset the input fields but keep the focus active
+  document.getElementById("productID").value = ""; // Clear the ProductID input
+  document.getElementById("title").value = ""; // Clear the title input
+  document.getElementById("description").value = ""; // Clear the description input
+  document.getElementById("condition").value = ""; // Clear the condition input
+  document.getElementById("retailPrice").value = ""; // Clear the retail price input
+  document.getElementById("soldPrice").value = ""; // Clear the sold price input
+  document.getElementById("productID").focus(); // Keep focus on the ProductID input for the next entry
 };
 
 // Add event listeners for "Enter" key press to submit location and product inputs
