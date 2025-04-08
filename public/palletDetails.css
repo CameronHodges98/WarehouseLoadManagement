@@ -29,31 +29,31 @@ header {
   }
   
   /* Flex container for header content */
-  .header-content {
+.header-content {
     display: flex;
     align-items: center; /* Center align vertically */
     justify-content: center; /* Center align horizontally */
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-  }
+}
   
   /* Logo style */
-  .logo {
+.logo {
     position: absolute;
     left: 20px; /* Position logo to the left */
     height: 110px; /* Adjust logo size */
     width: auto;
-  }
+}
   
   /* Title styling */
-  h1 {
+h1 {
     color: #a50000;
     font-size: larger;
     margin: 0;
     text-align: center;
     text-decoration: underline 1.3px solid black;
-  }
+}
 
 
 /* Section to position the buttons in the top-right corner */

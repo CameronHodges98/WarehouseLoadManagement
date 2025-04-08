@@ -50,20 +50,20 @@ const displayPalletDetails = () => {
     const overflow = pallet.overflow !== undefined ? pallet.overflow : "False"; // Default to False if undefined
 
     palletDetailsDiv.innerHTML = `
-          <p><strong>Load ID:</strong> ${loadID}</p>
-          <p><strong>Pallet ID:</strong> ${palletID}</p>
-          <p><strong>Products:</strong></p>
-          <p class="product-list">
-              ${
-                products.length > 0
-                  ? products
-                      .map(
-                        (product) =>
-                          `<a href="productDetails.html?loadID=${loadID}&palletID=${palletID}&productID=${product.productID}">${product.productID}</a>`
-                      )
-                      .join(", ")
-                  : "No products in this pallet."
-              }
+        <p><strong>Load ID:</strong> ${loadID}</p>
+        <p><strong>Pallet ID:</strong> ${palletID}</p>
+        <p><strong>Products:</strong></p>
+        <p class="product-list">
+            ${
+              products.length > 0
+                ? products
+                    .map(
+                      (product) =>
+                        `<a href="productDetails.html?loadID=${loadID}&palletID=${palletID}&productID=${product.productID}">${product.productID}</a>`
+                    )
+                    .join(", ")
+                : "No products in this pallet."
+            }
           </p>
       `;
 

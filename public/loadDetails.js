@@ -12,7 +12,7 @@ const loadDetailsDiv = document.getElementById("loadDetails");
 
 let loads = JSON.parse(localStorage.getItem("loads")) || {}; // Get loads from localStorage
 
-// Function to display the LoadID and PalletIDs
+// Function to display the LoadID and PalletIDs along with QR codes
 function displayLoadDetails() {
   if (loadID && loads[loadID]) {
     const pallets = Object.keys(loads[loadID]); // Extract pallet IDs from the object
@@ -22,14 +22,24 @@ function displayLoadDetails() {
         <p><strong>Load ID:</strong> ${loadID}</p>
         <div class="pallet-list">
             ${pallets
-              .map(
-                (palletID) =>
-                  `<div class="pallet">
-                      <a href="palletDetails.html?loadID=${loadID}&palletID=${palletID}" target="_self">
-                        Pallet ID: ${palletID}
-                      </a>
-                  </div>`
-              )
+              .map((palletID) => {
+                const qrCode = loads[loadID][palletID]?.qrCode;
+                return `
+                <section class="pallet-info">
+                    <div class="qr-code-container">
+                      ${
+                        qrCode
+                          ? `<img src="${qrCode}" alt="QR Code for ${palletID}" class="qr-code"/>`
+                          : ""
+                      }
+                    </div>
+                    <div class="pallet">
+                        <a href="palletDetails.html?loadID=${loadID}&palletID=${palletID}" target="_self">
+                          Pallet ID: ${palletID}
+                        </a>
+                    </div>
+                  </section>`
+              })
               .join("")}
         </div>`;
     } else {

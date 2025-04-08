@@ -1,3 +1,4 @@
+
 // LoadID and PalletID Counters
 let loadID = 1;
 let palletID = 1;
@@ -23,8 +24,9 @@ const getNextPalletID = () => String(palletID++).padStart(6, "0");
 const createPalletID = (loadID) => {
   if (loads[loadID]) {
     const palletID = getNextPalletID();
-    loads[loadID][palletID] = { products: [] }; // Assign an empty product array at creation
+    loads[loadID][palletID] = { products: [], qrCode: "" }; // Assign an empty product array and a QR code field
     localStorage.setItem("loads", JSON.stringify(loads)); // Save the changes to localStorage
+    generateQRCode(palletID); // Generate QR code for the pallet
     updateUI(); // Call to re-render the page with the updated pallets
     return palletID;
   }
@@ -229,102 +231,21 @@ document.getElementById("searchInput").addEventListener("input", updateUI);
 // Initial UI update on page load
 updateUI();
 
-// Function to export data to Excel with LoadID, PalletID, ProductID, and Product Info
-function exportToExcel() {
-  const exportID = document.getElementById("exportLoadID").value.trim(); // Get the input value
+// Function to generate QR Code for each PalletID and store it in the data structure
+const generateQRCode = (palletID) => {
+  const qrCode = new QRCode(document.createElement("div"), {
+    text: palletID,
+    width: 128,
+    height: 128,
+  });
 
-  if (!exportID) {
-    alert("Please enter a LoadID or PalletID to export.");
-    return;
-  }
-
-  const dataToExport = [];
-
-  if (Object.keys(loads).length === 0) {
-    alert("No Loads available for export.");
-    return;
-  }
-
-  // Add headers to the dataToExport array
-  dataToExport.push([
-    "LoadID",
-    "PalletID",
-    "ProductID",
-    "Title",
-    "Description",
-    "Condition",
-    "Retail Price",
-    "Sold Price",
-  ]);
-
-  // Check if the input is a LoadID or PalletID
-  if (loads[exportID]) {
-    // Export by LoadID
-    const loadData = loads[exportID];
-    for (let palletID in loadData) {
-      const pallet = loadData[palletID];
-      for (let product of pallet.products) {
-        const {
-          productID,
-          title,
-          description,
-          condition,
-          retailPrice,
-          soldPrice,
-        } = product;
-        dataToExport.push([
-          exportID,
-          palletID,
-          productID,
-          title || "N/A", // Default to "N/A" if title is missing
-          description || "N/A", // Default to "N/A" if description is missing
-          condition || "N/A", // Default to "N/A" if condition is missing
-          retailPrice || "N/A", // Default to "N/A" if retailPrice is missing
-          soldPrice || "N/A", // Default to "N/A" if soldPrice is missing
-        ]);
-      }
-    }
-  } else {
-    // Check if it's a PalletID instead of a LoadID
-    let found = false;
-    for (let load in loads) {
-      if (loads[load][exportID]) {
-        found = true;
-        const pallet = loads[load][exportID];
-        for (let product of pallet.products) {
-          const {
-            productID,
-            title,
-            description,
-            condition,
-            retailPrice,
-            soldPrice,
-          } = product;
-          dataToExport.push([
-            load,
-            exportID,
-            productID,
-            title || "N/A",
-            description || "N/A",
-            condition || "N/A",
-            retailPrice || "N/A",
-            soldPrice || "N/A",
-          ]);
-        }
-        break;
-      }
-    }
-    if (!found) {
-      alert(`PalletID ${exportID} not found.`);
-      return;
+  // Store QR code as base64 string in the data structure
+  let base64QRCode = qrCode._oDrawing._elCanvas.toDataURL("image/png");
+  for (let loadID in loads) {
+    if (loads[loadID][palletID]) {
+      loads[loadID][palletID].qrCode = base64QRCode; // Link QR code to the palletID
+      localStorage.setItem("loads", JSON.stringify(loads)); // Save changes to localStorage
+      break;
     }
   }
-
-  // Convert the data to a worksheet and generate Excel
-  const ws = XLSX.utils.aoa_to_sheet(dataToExport);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Export Data");
-
-  // Trigger the download
-  XLSX.writeFile(wb, `${exportID}_export.xlsx`);
-}
+};
