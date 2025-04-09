@@ -1,3 +1,4 @@
+
 // LoadID and PalletID Counters
 let loadID = 1;
 let palletID = 1;
@@ -249,8 +250,9 @@ const generateQRCode = (palletID) => {
   }
 };
 
-// Function to export data to Excel with LoadID, PalletID, ProductID, and Product Info
-function exportToExcel() {
+
+ // Function to export data to Excel with LoadID, PalletID, ProductID, and Product Info
+ function exportToExcel() {
   const exportID = document.getElementById("exportLoadID").value.trim(); // Get the input value
 
   if (!exportID) {
