@@ -177,6 +177,30 @@ header {
     margin: 50px; /* Space between QR code and PalletID */
 }
 
+.carousel-btn {
+    padding: 10px 15px;
+    background-color: #d32f2f;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+  }
+  
+  .carousel-btn:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  .carousel-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+
 /* Footer Section Styles */
 footer {
     position: fixed;
